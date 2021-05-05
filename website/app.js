@@ -1,6 +1,4 @@
 /* Global Variables */
-const form = document.querySelector('.app__form');
-const icons = document.querySelectorAll('.entry__icon');
 
 // Base URL and API Key for OpenWeatherMap API
 const baseURL = 'http://api.openweathermap.org/data/2.5/weather?zip=';
@@ -74,8 +72,6 @@ const updateUI = async () => {
   const request = await fetch('/all');
   try {
     const allData = await request.json()
-    // show icons on the page
-    icons.forEach(icon => icon.style.opacity = '1');
     // update new entry values
     document.getElementById('date').innerHTML = `Date: ${allData.date}`;
     document.getElementById('temp').innerHTML = `Temperature: ${allData.temp}`;
