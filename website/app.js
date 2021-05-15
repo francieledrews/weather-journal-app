@@ -20,24 +20,32 @@ function performAction(e) {
   const zip = document.getElementById('zip').value;
   const content = document.getElementById('feelings').value;
 
-  getWeather(baseURL, zip, apiKey)
-    .then(function (userData) {
-      // add data to POST request
-      postData('/add', {
-        location: `${userData.name}, ${userData.sys.country}`,
-        date: newDate,
-        temp: userData.main.temp,
-        icon: userData.weather[0].icon,
-        description: userData.weather[0].description,
-        content
-      })
-    }).then(function (newData) {
-      // scroll down
-      window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth"});
-      // call updateUI to update browser content
-      updateUI();
-    });
+  if (zip !== '' && content !== '') {
+    getWeather(baseURL, zip, apiKey)
+      .then(function (userData) {
+        if (userData.cod == "404" || userData.cod == "400") {
+          alert('Sorry, the zipcode and/or the country code is incorret. Please check it and try again, entering as shown in the examples if it is NOT a US zipcode.');
+        }
+        // add data to POST request
+        postData('/add', {
+          location: `${userData.name}, ${userData.sys.country}`,
+          date: newDate,
+          temp: userData.main.temp,
+          icon: userData.weather[0].icon,
+          description: userData.weather[0].description,
+          content
+        })
+      }).then(function (newData) {
+        // call updateUI to update browser content
+        updateUI();
+      });
+  } else {
+    alert('Sorry, you have to fill up all fields. Please enter your zipcode and tell us how you are feeling today :D');
+  }
 }
+
+
+
 
 /* Function to GET Web API Data*/
 const getWeather = async (baseURL, zip, apiKey) => {
@@ -77,6 +85,8 @@ const updateUI = async (url = '') => {
   const req = await fetch('/all');
   try {
     const allData = await req.json();
+    // scroll down (in the case to be needed)
+    window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
     // show topLine and bottomLine on the page
     document.getElementById('topLine').innerHTML = `<div class="line"></div>`;
     document.getElementById('bottomLine').innerHTML = `<div class="line"></div>`;
