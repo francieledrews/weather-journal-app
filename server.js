@@ -26,30 +26,31 @@ app.use(express.static('website'));
 
 // Spin up the server
 const port = 8080;
-const server = app.listen(port, listening);
-
-//Callback to debug
-function listening() {
+app.listen(port, () => {
+    //Callback to debug
     console.log('server running');
     console.log(`runing on localhost: ${port}`)
-}
+});
 
 
-// Initialize all route with a callback function
-app.get('/all', sendData);
-
-// Callback function to complete GET '/all'
-function sendData(req, res) {
+// GET route
+app.get('/all', (req, res) => {
+    // Callback function to complete GET '/all'
     res.send(projectData);
-}
+    console.log(projectData);
+});
 
-//POST route
-const data = [];
-app.post('/add', addData);
-
-function addData(req, res) {
-    projectData['date'] = req.body.date;
-    projectData['temp'] = req.body.temp;
-    projectData['content'] = req.body.content;
-    res.send(projectData);
-}
+// POST route
+app.post('/add', (req, res) => {
+    newEntry = {
+        location: req.body.location,
+        date: req.body.date,
+        temp: req.body.temp,
+        icon: req.body.icon,
+        description: req.body.description,
+        content: req.body.content
+    }
+    projectData = newEntry
+    console.log(projectData)
+    res.send(projectData)
+});
