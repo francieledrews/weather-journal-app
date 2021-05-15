@@ -1,126 +1,160 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
-    background: #fffff8;
-    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    background-image: url(./assets/background.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: 'News Cycle', sans-serif;
 }
 
 #app {
     display: grid;
-    grid-auto-rows: minmax(150px, auto);
-    /* grid-template-columns:  */
-    height: 100vh;
-    background: #f23557;
-    color: #f0d43a;
+    grid-template-rows: auto;
     justify-content: center;
-    grid-gap: 0.5em;
-    font-size: 20px;
-    font-family: 'Oswald', sans-serif;
+    align-content: center;
+    padding-top: 1rem;
+    height: 100vh;       
+}
+
+@media only screen and (min-width: 900px) and (max-height: 700px) {
+    #app {
+        height: auto;
+    }
 }
 
 .holder {
     display: flex;
     flex-direction: column;
     text-align: center;
-    justify-content: center;
-}
-
-.entry {
-    background: rgba(59, 74, 107, .4);
-    margin-bottom: 4rem;
-}
-
-#entryHolder {
-    padding-top: 2rem;
-}
-
-#date {
-    font-size: 27px;
-}
-
-#temp {
-    font-size: 27px;
-}
-
-#content {
-    font-size: 27px;
 }
 
 .headline {
     font-size: 5rem;
+    font-weight: 700;
+    color: #272010;
+    font-family: 'Cabin Condensed', sans-serif;
 }
 
 .zip {
     align-items: center;
 }
 
+.note1 {
+    font-size: 12px;
+    line-height: 120%;
+}
+
+.examples {
+    font-size: 10px;
+    line-height: 120%;
+    margin-bottom: 1.2rem;
+}
+
+.entry {
+    margin: 1.5rem 0 3rem 0;
+}
+
+#entryHolder {
+    margin: 1rem 0 1rem 0;
+}
+
+#location {
+    font-size: 28px;
+    font-family: 'Cabin Condensed', sans-serif;
+}
+
+#date {
+    font-size: 16px;
+}
+
+.icon-and-temp {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 6rem;
+}
+
+#temp {
+    font-size: 68px;
+    font-weight: 900;
+}
+
+#description {
+    font-size: 20px;
+    margin-bottom: 0.2rem;
+}
+
+#content {
+    font-size: 18px;
+    font-weight: bold;
+}
+
 .feel {
     align-items: center;
     width: auto;
+    margin-bottom: 2rem;
 }
 
-.title {
-    font-size: 20px;
+.line {
+    border-bottom: 5px solid #272010;
 }
 
 .button {
-    margin-top: 1rem;
-    display: flex;
-    justify-content: flex-end;
-    width: 100%;
+    margin-top: 0.5rem;
 }
 
 /*  Basic Styling To Override Default For Basic HTML Elements */
 
 label {
-    display: block;
-    font-size: 27px;
-}
-
-form {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
+    font-size: 1.5rem;
 }
 
 input {
     display: block;
-    height: 60px;
+    height: 52px;
     width: 320px;
-    background: #22b2da;
-    color: #f0d43a;
-    font-size: 20px;
-    font-family: 'Oswald', sans-serif;
+    background: #AEE6F2;
+    color: #F20574;
+    font-size: 24px;
+    font-family: 'Cabin Condensed', sans-serif;
     border: none;
     text-align: center;
 }
 
 button {
-    width: 160px;
-    height: 80px;
-    background: #3b4a6b;
-    color: #f0d43a;
-    font-size: 26px;
-    font-family: 'Oswald', sans-serif;
-    border: none;
-    border-radius: 3%;
+    width: 120px;
+    height: 40px;
+    font-size: 18px;
+    border-radius: 6px;
+    transition: 0.3s;
+    border: solid 2px #F20574;
+    background: #F20574;
+    color: #fff;
+    font-family: 'Cabin Condensed', sans-serif;
+    margin: 0 0.5rem;
 }
 
-button:hover {
+button:hover, button:focus {
     cursor: pointer;
-    background:#f0d43a;
-    color: #3b4a6b;
-}
-
-h1 {
-    font-size: 36px;
+    background: #fff;
+    color: #F20574;
 }
 
 textarea {
-    background: #22b2da;
-    color: #f0d43a;
-    font-size: 20px;
-    font-family: 'Oswald', sans-serif;
+    background: #AEE6F2;
+    color: #F20574;
+    font-size: 24px;
+    font-family: 'Cabin Condensed', sans-serif;
     text-align: center;
-    width: 100%;
+    border: none;
+    padding: 1rem 0;
+    margin-bottom: 0.5rem;
 }
 
 /* Reset style for HTML element on active to have no border*/
